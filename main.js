@@ -121,9 +121,9 @@ function getProjectionMatrix() {
 function getViewMatrix() {
     return new Float32Array([
         1, 0, 0, 0,
-        0, 0.8, 0.6, 0,
-        0, -0.6, 0.8, 0,
-        0, -3, -8, 1
+        0, 0.9, 0.4, 0,
+        0, -0.4, 0.9, 0,
+        0, -2, -5, 1
     ]);
 }
 
