@@ -34,6 +34,7 @@ void main() {
 `;
 
 const fragmentShaderSource = `
+
 precision mediump float;
 
 void main() {
@@ -102,7 +103,7 @@ gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, 0, 0);
 // =======================
 
 function getProjectionMatrix() {
-    const fov = Math.PI / 4;
+    const fov = Math.PI / 8;
     const aspect = canvas.width / canvas.height;
     const near = 0.1;
     const far = 100;
