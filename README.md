@@ -5,7 +5,7 @@ Treasure Collector 3D Game for Computer Graphics
 ### Clone the repo
 Copy and paste onto terminal
 ```bash
-git clone https://github.com/Sadita06/CS5053-Graphics-Project.git
+git clone https://github.com/Sadita06/CS4053-Graphics-Project.git
 ```
 
 ## Team Git Workflow
