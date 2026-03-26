@@ -1,4 +1,4 @@
-# CS5053-Graphics-Project
+# CS4053-Graphics-Project
 Treasure Collector 3D Game for Computer Graphics
 
 ## Installation
