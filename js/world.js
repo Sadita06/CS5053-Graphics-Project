@@ -1,0 +1,1 @@
+// Defines all objects in the scene
