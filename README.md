@@ -24,6 +24,11 @@ git commit -m "//message goes here"
 git push
 ```
 
+## Testing
+- Run this in your terminal and then follow this link
+```bash
+python3 -m http.server 8000
+```
 
 ## Description
 A 3D WebGL game where the player explores a world and collects treasures.
