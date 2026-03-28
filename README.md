@@ -25,7 +25,7 @@ git push
 ```
 
 ## Testing
-- Run this in your terminal and then follow this link
+- Run this in your terminal and then follow the link it gives you.
 ```bash
 python3 -m http.server 8000
 ```
