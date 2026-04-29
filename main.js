@@ -11,6 +11,7 @@ Responsibilities:
 */
 
 import { Player } from "./js/player.js";
+import {CreateImageTexture} from "./js/Functions.js";
 
 const canvas = document.getElementById("glCanvas");
 const gl = canvas.getContext("webgl");
@@ -301,12 +302,35 @@ const coinVertices = new Float32Array([
   -0.5, 0,  0.5,  0, 1
 ])
 
+const coinTexCoords = new Float32Array([
+  0,0,
+  1,0,
+  1,1,
+  0,1
+]);
+
+const coinNormals = new Float32Array([
+  0,1,0,
+  0,1,0,
+  0,1,0,
+  0,1,0
+]);
+
+const coinTangents = new Float32Array([
+  1,0,0,
+  1,0,0,
+  1,0,0,
+  1,0,0
+]);
+
 const coinIndices = new Uint16Array([
   0, 1, 2,
   0, 2, 3
 ]);
 
 const coinMesh = createMesh(coinVertices, coinIndices);
+const coinTexture = CreateImageTexture(gl, "Textures/coin.png", gl.CLAMP_TO_EDGE, gl.LINEAR, gl.LINEAR)
+const coinNormal = CreateImageTexture(gl, "Textures/coin_normal.png", gl.CLAMP_TO_EDGE, gl.LINEAR, gl.LINEAR);
 
 function createMesh(vertices, indices) {
   const vertexBuffer = gl.createBuffer();

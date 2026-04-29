@@ -47,3 +47,22 @@ export function drawWorld(gl, aPosition, uModel, uColor) {
 
   gl.drawElements(gl.TRIANGLES, indexCount, gl.UNSIGNED_SHORT, 0);
 }
+
+function drawCoin(modelMatrix) {
+
+  gl.uniformMatrix4fv(uModel, false, modelMatrix);
+
+  // TEXTURE
+  gl.activeTexture(gl.TEXTURE0);
+  gl.bindTexture(gl.TEXTURE_2D, coinTexture);
+  gl.uniform1i(gl.getUniformLocation(program, "uTexture"), 0);
+
+  // NORMAL MAP
+  gl.activeTexture(gl.TEXTURE1);
+  gl.bindTexture(gl.TEXTURE_2D, coinNormal);
+  gl.uniform1i(gl.getUniformLocation(program, "uNormalMap"), 1);
+
+  gl.uniform1f(gl.getUniformLocation(program, "uBumpStrength"), 3.0);
+
+  gl.drawElements(gl.TRIANGLES, 6, gl.UNSIGNED_SHORT, 0);
+} 

@@ -97,7 +97,7 @@ function CalculateTangents(vertices, indices, textureCoords, normals) {
   return { tangents: tangents, bitangents: bitangents };
 }
 
-function CreateImageTexture(_source, _wrap, _minFilter, _magFilter, _placeholder = null) { // Load a 2D texture from an image file
+export function CreateImageTexture(gl, _source, _wrap, _minFilter, _magFilter, _placeholder = null) { // Load a 2D texture from an image file
 	var texture = gl.createTexture(); // Create the texture object
 	gl.bindTexture(gl.TEXTURE_2D, texture); // Bind the texture for setup
 	gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, _wrap); // Horizontal wrap mode
@@ -112,8 +112,8 @@ function CreateImageTexture(_source, _wrap, _minFilter, _magFilter, _placeholder
 		gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true); // WebGL images load top-down, so flip them for standard UVs
 		gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, image); // Copy the image into GPU memory
 		gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false); // Reset global unpack state so other uploads are unaffected
-		if (UsesMipmaps(_minFilter))
-			gl.generateMipmap(gl.TEXTURE_2D); // Build mipmaps only when the chosen filter needs them
+		//if (UsesMipmaps(_minFilter))
+		//	gl.generateMipmap(gl.TEXTURE_2D); // Build mipmaps only when the chosen filter needs them
 	}; 
 	image.onerror = function() {
 		console.error("Failed to load image texture:", _source);
