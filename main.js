@@ -294,6 +294,20 @@ const playerIndices = new Uint16Array([
   4, 5, 1,  4, 1, 0
 ]);
 
+const coinVertices = new Float32Array([
+  -0.5, 0, -0.5,  0, 0,
+   0.5, 0, -0.5,  1, 0,
+   0.5, 0,  0.5,  1, 1,
+  -0.5, 0,  0.5,  0, 1
+])
+
+const coinIndices = new Uint16Array([
+  0, 1, 2,
+  0, 2, 3
+]);
+
+const coinMesh = createMesh(coinVertices, coinIndices);
+
 function createMesh(vertices, indices) {
   const vertexBuffer = gl.createBuffer();
   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
