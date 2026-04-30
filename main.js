@@ -15,6 +15,7 @@ import {CreateImageTexture} from "./js/Functions.js";
 
 const canvas = document.getElementById("glCanvas");
 const gl = canvas.getContext("webgl");
+let score = 0;
 
 if (!canvas) {
   throw new Error("Canvas #glCanvas not found");
@@ -261,7 +262,18 @@ for (let i = 0; i < 5; i++) {
     y: 1.0,
     z: Math.random() * 20 - 10,
     rotation: 0,
-    collected: false
+    collected: false,
+
+    getBoundingBox() {
+    return {
+      minX: this.x - 0.3,
+      maxX: this.x + 0.3,
+      minY: this.y - 0.3,
+      maxY: this.y + 0.3,
+      minZ: this.z - 0.3,
+      maxZ: this.z + 0.3
+    };
+  }
   });
 }
 
@@ -426,6 +438,7 @@ function drawCoin(coin) {
 // =======================
 function render() {
   player.update([]);
+  const collected = player.checkCollectibles(coins);
 
   const cameraPos = player.getCameraPosition();
   const cameraTarget = player.getCameraTarget();
@@ -447,14 +460,18 @@ function render() {
   drawGround();
   drawPlayer();
   for (let coin of coins) {
-  coin.y = 0.5;
-  coin.rotation += 0.05;
+    coin.y = 0.5;
+    coin.rotation += 0.05;
   }
   for (let coin of coins) {
-  if (!coin.collected) {
-    drawCoin(coin);
+    if (!coin.collected) {
+      drawCoin(coin);
+    }
   }
-}
+  if (collected.length > 0) {
+    score += collected.length;
+    document.getElementById("score").innerText = "Score: " + score;
+  }
 
   requestAnimationFrame(render);
 }
