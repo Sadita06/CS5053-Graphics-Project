@@ -72,6 +72,7 @@ uniform sampler2D uTexture;
 uniform vec4 uColor;
 uniform bool uUseTexture;
 
+
 void main() {
   if (uUseTexture) {
     gl_FragColor = texture2D(uTexture, vTexCoord);
@@ -256,6 +257,12 @@ function createGrassTexture(gl) {
 
 const grassTexture = createGrassTexture(gl);
 const coins = [];
+const trees = [
+  { x: -2, z: -2 },
+  { x: -1, z: -3 },
+  { x: -3, z: -1 },
+  { x: -2, z: -4 }
+];
 for (let i = 0; i < 5; i++) {
   coins.push({
     x: Math.random() * 20 - 10,
@@ -320,14 +327,6 @@ const playerIndices = new Uint16Array([
 ]);
 
 
-/*
-const coinVertices = new Float32Array([
-  -0.5, 0, -0.5,  0, 0,
-   0.5, 0, -0.5,  1, 0,
-   0.5, 0,  0.5,  1, 1,
-  -0.5, 0,  0.5,  0, 1
-]);
-*/
 const coinVertices = new Float32Array([
   -0.5, -0.5, 0,   0, 0,
    0.5, -0.5, 0,   1, 0,
@@ -344,6 +343,8 @@ const coinIndices = new Uint16Array([
 const coinMesh = createMesh(coinVertices, coinIndices);
 const coinTexture = CreateImageTexture(gl, "Textures/coin-bg.png", gl.CLAMP_TO_EDGE, gl.LINEAR, gl.LINEAR)
 const coinNormal = CreateImageTexture(gl, "Textures/coin-bg_normal.png", gl.CLAMP_TO_EDGE, gl.LINEAR, gl.LINEAR);
+const barkTexture = CreateImageTexture(gl, "Textures/bark.png", gl.REPEAT, gl.LINEAR, gl.LINEAR);
+const barkNormal = CreateImageTexture(gl, "Textures/bark_normal.png", gl.REPEAT, gl.LINEAR, gl.LINEAR);
 
 function createMesh(vertices, indices) {
   const vertexBuffer = gl.createBuffer();
